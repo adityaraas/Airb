@@ -2,17 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
-input[type='number'] {
-  -moz-appearance: textfield;
-  appearance: textfield;
+ 
+  .main-header{
+    position: fixed;
+    width:100%;
+    top:0;
+    background: white;
+}
+.primary-header{
+    transition: transform 250ms cubic-bezier(0.2,0,0,1),visibility 0ms 125ms;
+    transform: scale(1,1) translateY(0);
+    transform-origin: 50% 50%;
+}
+.secondary-header{
+    position: absolute;
+    top:0;
+    visibility: hidden;
+    transition: transform 250ms cubic-bezier(0.2,0,0,1),visibility 0ms 125ms;
+    transform: scale(2.43,1.75) translateY(0);
+    transform-origin: 50% 0%;
 }
 
-input[type='number']::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+
+.show-item .primary-header{
+    visibility: hidden;
+    transition: transform 250ms cubic-bezier(0.2,0,0,1),visibility 0ms 12 5ms;
+    transform: scale(0.34,0.727272) translateY(0);
+    transform-origin: 50% 50%;
 }
 
-input[type='number']::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+
+.show-item .secondary-header{
+    left:50%;
+    visibility: visible;
+    transform-origin: 50% 0%;
+    top: 15px;
+    transform: translate(-50%,-50%);
+    top:50px;
+}
+.parent-container .show-item{
+    height: 105px;
+
+}
+
+.filter-header{
+    top: 171px;
+    position: sticky;
+}   
+.show-item .filter-header{
+    top: 105px;
+}
+.content-section{
+    margin-top: 210px;
 }
