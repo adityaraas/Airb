@@ -21,3 +21,18 @@ model User{
   provider String?
   providerAccountId String?
 }
+
+model property{
+  id     Int  @id @default(autoincrement())
+  PropertyId String @unique
+  category  String
+  privacyType String
+  location Json
+  guests Int
+  beds Int
+  bedrooms Int
+  images String[]
+  title String
+  description String
+  priceInfo Json
+}

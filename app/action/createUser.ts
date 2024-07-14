@@ -2,11 +2,11 @@
 import prisma from "../lib/dbConnect";
 async function createUser(userData:any){
     try{
-        const userInfo=await prisma.User.create({
+        const userInfo=await prisma.user.create({
             
             data:userData
         })
-        return {messahe:"successfully saved",
+        return {message:"successfully saved",
             data
         }
 

@@ -2,10 +2,23 @@
 import { useRouter } from "next/navigation";
 import uniqid from 'uniqid';
 import SvgComponent from "../components/AppLogo";
+import useStore from "../lib/useStore";
+import { useEffect, useState } from "react";
 
 const PageComponent=()=>{
   const router=useRouter();
-  const uniqidid= uniqid();
+  
+  const [uniqidid,setUniqid]=useState<any>()
+  const addProperty=useStore((state:any)=>state.addProperty)
+  useEffect(()=>{
+    const id= uniqid();
+    setUniqid(id)
+    addProperty({
+      PropertyID:id
+    })
+  },[]
+
+  )
     return(
         <><div className="flex max-w-screen-2xl justify-between items-center h-screen m-auto  mt-[-80px]">
         <div className="flex max-w-md text-5xl font-bold pl-11">It's easy to get started on Airbnb</div>

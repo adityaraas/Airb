@@ -1,7 +1,9 @@
 'use client';
 import {useRouter} from 'next/navigation'
 import uniqid from 'uniqid'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
+import useStore from "@/app/lib/useStore"
 
 const PageComponent=()=>{
     
@@ -13,6 +15,30 @@ const PageComponent=()=>{
     const [bedrooms,setBedrooms]=useState<number>(0);
     const [beds,setBeds]=useState<number>(0);
     const [bathrooms,setBathrooms]=useState<number>(0);
+    const addProperty=useStore((state:any)=>state.addProperty);
+    const property=useStore((state:any)=>state.property);
+    useEffect(()=>{
+           addProperty({
+            guests
+        })
+    },[guests]);
+    useEffect(()=>{
+        
+        addProperty({
+            bedrooms
+    })},[bedrooms]);
+    useEffect(()=>{
+        
+        addProperty({
+            beds
+    })},[beds]);
+    useEffect(()=>{
+        
+        addProperty({
+            bathrooms
+        })},[bathrooms]);
+   
+
     return (
 
         <><div className='flex flex-col gap-6 justify-center w-1/3 m-auto'>
@@ -80,7 +106,7 @@ const PageComponent=()=>{
         
         <div className="fixed w-full border-solid border-t-4 p-6 bottom-0">
                 <button onClick={()=>router.back()}> Back</button>
-                <button onClick={()=>router.push(`/become-a-host/${uniqidid}/photos`)} className="p-3 bg-gradient-to-tr text-white  from-pink-600 via-pink-700 to-pink-800 float-right font-bold ml-auto">Next</button>
+                <button onClick={()=>router.push(`/become-a-host/${property.PropertyID}/photos`)} className="p-3 bg-gradient-to-tr text-white  from-pink-600 via-pink-700 to-pink-800 float-right font-bold ml-auto">Next</button>
             </div>
         
         </>
